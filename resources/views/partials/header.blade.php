@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 
     <html dir="{{ rtl() ? 'rtl' : 'ltr' }}" class="{{ rtl() ? 'rtl' : '' }}" lang="{{ session()->get('locale', Config::get('app.locale')) }}">
-    
+
 
         <head>
             <style>
@@ -13,7 +13,7 @@
 --{{ $color->name}}_with_opacity: {{ $color->pivot->value }}23;
                 @endif
             @endforeach
-        
+
 }
             </style>
             <!-- Required meta tags -->
@@ -94,7 +94,7 @@
                 const LANG = "{{ session()->get('locale', Config::get('app.locale')) }}";
             </script>
 
-        
+
         </head>
 
         @php
@@ -112,10 +112,6 @@
 
         <body class="admin"  style="{!! $css !!} ">
 
-        <div class="preloader">
-            <h3 data-text="{{ config('configs.preloader') }}..">
-                {{ config('configs.preloader') }}..</h3>
-        </div>
 
         <div class="main-wrapper" style="min-height: 600px">
 

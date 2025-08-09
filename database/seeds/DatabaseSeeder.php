@@ -15,6 +15,7 @@ use Database\Seeders\CaseCategorySeeder;
 use Database\Seeders\LawyerSeeder;
 use Database\Seeders\CaseSeeder;
 use Database\Seeders\AppointmentSeeder;
+use Database\Seeders\PermissionSeeder;
 use Database\Seeders\TaskSeeder;
 
 class DatabaseSeeder extends Seeder {
@@ -24,40 +25,41 @@ class DatabaseSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
-	
+
 		// $this->call(ConfigTableSeeder::class);
 
 		// contact
-		$this->call(ContactCategorySeeder::class);
-		$this->call(ContactSeeder::class);
+		// $this->call(ContactCategorySeeder::class);
+		// $this->call(ContactSeeder::class);
 
 		// Client
-		$this->call(ClientCategorySeeder::class);
-		$this->call(ClientSeeder::class);
+		// $this->call(ClientCategorySeeder::class);
+		// $this->call(ClientSeeder::class);
 
 
 		// court
-		$this->call(CourtCategorySeeder::class);
-		$this->call(CourtSeeder::class);
+		// $this->call(CourtCategorySeeder::class);
+		// $this->call(CourtSeeder::class);
 
-		// case 
-		$this->call(CaseActSeeder::class);
-		$this->call(StageSeeder::class);
-		$this->call(CaseCategorySeeder::class);
+		// case
+		// $this->call(CaseActSeeder::class);
+		// $this->call(StageSeeder::class);
+		// $this->call(CaseCategorySeeder::class);
 
 		// lawyer
-		$this->call(LawyerSeeder::class);
+		// $this->call(LawyerSeeder::class);
 
 		// CaseSeeder
-		$this->call(CaseSeeder::class);
+		// $this->call(CaseSeeder::class);
 
 		// Appointment Seeder
-		$this->call(AppointmentSeeder::class);
+		// $this->call(AppointmentSeeder::class);
 
 		// Task
-		$this->call(TaskSeeder::class);
+		// $this->call(TaskSeeder::class);
 
 
+		// $this->call(PermissionSeeder::class);
 
 
 	}

@@ -16,6 +16,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->unsignedBigInteger('assignee_id')->nullable();
             $table->foreign('assignee_id')->references('id')->on('users')->onDelete('cascade');
 
@@ -25,7 +26,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('case_id');
             $table->foreign('case_id')->references('id')->on('cases')->onDelete('cascade');
 
-            
+
             $table->unsignedBigInteger('stage_id')->nullable();
             $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
 

@@ -11,7 +11,7 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px">Subscriptions List</h3>
                             <ul class="d-flex">
-                                @can('subscription-create')
+                                @can('subscription.create')
                                     <li><a class="primary-btn radius_30px mr-10 fix-gr-bg"
                                             href="{{ route('subscriptions.create') }}"><i class="ti-plus"></i>New
                                             Subscription</a></li>
@@ -57,15 +57,15 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right"
                                                             aria-labelledby="dropdownMenu2">
-                                                            @can('subscribtion-edit')
+                                                            @can('subscribtion.edit')
                                                                 <a href="{{ route('subscriptions.edit', $subscription->id) }}"
                                                                     class="dropdown-item" >@lang('common.Edit')</a>
                                                             @endcan
-                                                            @can('subscribtion-edit')
+                                                            @can('subscribtion.edit')
                                                                 <a href="{{ route('subscriptions.show', $subscription->id) }}"
                                                                     class="dropdown-item" >@lang('common.Show')</a>
                                                             @endcan
-                                                            @can('subscribtion-delete')
+                                                            @can('subscribtion.delete')
                                                                 <a href="#" class="dropdown-item" type="button"
                                                                     data-toggle="modal" href="#"
                                                                     data-id="{{ @$subscription->id }}"
@@ -78,11 +78,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @include('backEnd.partials.deleteModalMessage',[
+                                        'item_id' => @$subscription->id,
+                                        'item_name' => 'subscription',
+                                        'route_url' => route('subscriptions.destroy',$subscription->id)])
                                 @endforeach
-                                @include('backEnd.partials.deleteModalMessage',[
-                                                    'item_id' => @$subscription->id,
-                                                    'item_name' => 'subscription',
-                                                    'route_url' => route('subscriptions.destroy',$subscription->id)])
                             </div>
                         </div>
                     </div>

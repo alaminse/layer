@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    
+
     public function index()
     {
 
@@ -83,7 +83,7 @@ class RoleController extends Controller
     public function editPermission(Role $role)
     {
         $permissions = Permission::all()->groupBy(function ($item) {
-            return explode('-', $item->name)[0]; // Group by prefix before the dash
+            return explode('.', $item->name)[0]; // Group by prefix before the dash
         });
 
         return view('role.assign_permission', compact('role', 'permissions'));
@@ -117,7 +117,7 @@ class RoleController extends Controller
         return redirect()->route('roles.index');
     }
 
-    // this is specific user permission 
+    // this is specific user permission
     // $user = User::find(1);
 
     // $permissions = Permission::pluck('name')->toArray();
@@ -125,7 +125,7 @@ class RoleController extends Controller
     // $user->syncPermissions($permissions);
     // return redirect()->route('roles.index');
     // Toastr::success(('Permession add successfully.'), __('common.Success'));
-  
+
 
     // public function roleUsers(Request $request)
     // {

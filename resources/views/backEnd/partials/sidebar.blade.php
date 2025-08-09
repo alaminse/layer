@@ -26,8 +26,6 @@
                 </a>
             </li>
         @endif
-
-
         @include('pos::menu')
         @include('sale::menu')
         @include('contact::menu')
