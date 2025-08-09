@@ -1,0 +1,18 @@
+{
+    "contact" : "contact.Contact",
+    "contact_category": "contact.Contact Category",
+    "client": "client.Client",
+    "client_category": "client.Client Category",
+    "case": "case.Case",
+    "case_category": "case.Case Category",
+    "opposite_lawyer": "lawyer.Opposite Lawyer",
+    "appointment": "appointment.Appointment",
+    "role": "role.Role",
+    "staff": "staff.Staff",
+    "case_stage": "case.Case Stage",
+    "court": "court.Court",
+    "court_category" : "court.Court Category",
+    "event" : "event.Event",
+    "task" : "task.Task",
+    "theme" : "setting.Theme"
+}

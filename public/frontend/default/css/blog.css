@@ -1,0 +1,654 @@
+/* line 3, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 991px) {
+    /* line 3, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_part .single_blog_post {
+        display: block !important;
+    }
+}
+
+/* line 8, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post:last-child {
+    margin-bottom: 0;
+}
+
+/* line 12, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_img img {
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    /* line 11, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_part .single_blog_post .single_blog_post_img {
+        margin-bottom: 25px;
+    }
+}
+
+/* line 19, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_content {
+    padding-left: 30px;
+}
+
+@media (max-width: 991px) {
+    /* line 19, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_part .single_blog_post .single_blog_post_content {
+        padding: 0;
+    }
+}
+
+/* line 24, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_content h4 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* line 27, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_content h4 a {
+    color: #222;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+/* line 30, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_content h4 a:hover {
+    color: #7c32ff;
+}
+
+/* line 35, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_part .single_blog_post .single_blog_post_content p {
+    font-weight: 400;
+    margin: 24px 0 40px;
+}
+
+@media (max-width: 991px) {
+    /* line 35, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_part .single_blog_post .single_blog_post_content p {
+        margin: 15px 0 20px;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /* line 35, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_part .single_blog_post .single_blog_post_content p {
+        margin: 15px 0 20px;
+    }
+}
+
+/* line 49, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_post_details a {
+    color: #8f8f8f;
+    font-size: 13px;
+    font-weight: 400;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #8f8f8f;
+    line-height: 15px;
+}
+
+@media (max-width: 991px) {
+    /* line 49, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+    .blog_post_details a {
+        margin-right: 8px;
+        padding-right: 8px;
+    }
+}
+
+/* line 61, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_post_details a:last-child {
+    border-right: 0;
+}
+
+/* line 64, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_part.scss */
+.blog_post_details a i {
+    margin-right: 5px;
+}
+
+/************** blog sidebar css here **************/
+/* line 2, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar {
+    background-color: #222;
+    padding: 80px 50px;
+}
+
+@media (max-width: 991px) {
+    /* line 2, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar {
+        padding: 30px 15px;
+        margin-top: 70px;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /* line 2, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar {
+        padding: 30px 15px;
+    }
+}
+
+/* line 12, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .input-group-append {
+    width: 100%;
+}
+
+/* line 15, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .sidebar_tittle {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 991px) {
+    /* line 15, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .sidebar_tittle {
+        margin-bottom: 15px;
+    }
+}
+
+/* line 20, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .sidebar_tittle h5 {
+    font-size: 13px;
+    color: #fff;
+    border-bottom: 1px solid #343739;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+}
+
+/* line 28, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar {
+    margin-top: 60px;
+}
+
+@media (max-width: 991px) {
+    /* line 28, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .single_blog_sidebar {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /* line 28, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .single_blog_sidebar {
+        margin-top: 40px;
+    }
+}
+
+/* line 36, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar:first-child {
+    margin-top: 0;
+}
+
+/* line 40, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar form input {
+    border-radius: 0;
+    color: #8f8f8f;
+    background-color: #2b2d2e;
+    border: 0px;
+    font-size: 13px;
+    height: 40px;
+    padding-left: 20px;
+}
+
+/* line 49, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar form .input-group-text {
+    border-radius: 0;
+    color: #fff;
+    background-color: #2b2d2e;
+    border: 0px;
+    font-size: 13px;
+    height: 40px;
+    margin-left: -1px;
+}
+
+/* line 59, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post {
+    margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /* line 59, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .single_blog_sidebar .single_sidebar_post {
+        margin-bottom: 20px;
+    }
+}
+
+/* line 64, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post:last-child {
+    margin-bottom: 0;
+}
+
+/* line 68, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post .single_post_img img {
+    max-width: 75px;
+}
+
+/* line 72, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post .single_post_content {
+    padding-left: 20px;
+}
+
+/* line 74, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post .single_post_content h5 {
+    font-size: 14px;
+    color: #fff;
+    line-height: 21px;
+}
+
+/* line 78, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post .single_post_content h5 a {
+    color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+/* line 81, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .single_sidebar_post .single_post_content h5 a:hover {
+    color: #7c32ff;
+}
+
+/* line 88, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* line 91, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar ul li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+/* line 94, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* line 97, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar ul li a {
+    color: #8f8f8f;
+}
+
+/* line 99, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar ul li a:hover {
+    color: #7c32ff;
+}
+
+/* line 105, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .instagram_img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* line 109, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .instagram_img .single_instagram_img {
+    flex: 31% 0 0;
+    margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* line 109, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .single_blog_sidebar .instagram_img .single_instagram_img {
+        flex: 15% 0 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* line 109, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+    .blog_sidebar .single_blog_sidebar .instagram_img .single_instagram_img {
+        flex: 15% 0 0;
+    }
+}
+
+/* line 118, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .instagram_img .single_instagram_img img {
+    width: 100%;
+}
+
+/* line 124, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .tag_list a {
+    font-size: 11px;
+    background-color: #2b2d2e;
+    color: #8f8f8f;
+    padding: 10px 13px;
+    display: inline-block;
+    margin: 0 1px 5px 0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+/* line 132, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_sidebar.scss */
+.blog_sidebar .single_blog_sidebar .tag_list a:hover {
+    background-color: #7c32ff;
+    color: #fff;
+}
+
+/*********** pagination part css here ************/
+/* line 2, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination_part {
+    border-top: 1px solid #e4e7e9;
+    margin-top: 80px;
+}
+
+/* line 6, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination {
+    margin-bottom: 0;
+    justify-content: center;
+    border-top: 0 solid transparent;
+    border-radius: 0;
+}
+
+/* line 11, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination .page-link {
+    border: 0px solid transparent;
+    color: #8f8f8f;
+    padding: 13px 13px;
+    border-top: 1px solid transparent;
+}
+
+/* line 16, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination .page-link:hover {
+    background-color: transparent;
+}
+
+/* line 21, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination .active .page-link {
+    color: #222;
+    border-top: 1px solid #222;
+    background-color: transparent;
+    border-color: #222;
+}
+
+/* line 28, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_pagination.scss */
+.pagination .page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: none;
+}
+
+/*********** pagination part css end ************/
+/************** blog details css here *************/
+/* line 4, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.blog_details_part .blog_details_img img {
+    width: 100%;
+}
+
+/* line 8, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.blog_details_part .blog_details_content {
+    padding: 72px 120px 0 120px;
+}
+
+@media (max-width: 991px) {
+    /* line 8, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .blog_details_part .blog_details_content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    /* line 8, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .blog_details_part .blog_details_content {
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    /* line 8, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .blog_details_part .blog_details_content {
+        padding: 30px;
+    }
+}
+
+/* line 19, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.blog_details_part .blog_details_content p {
+    margin: 20px 0;
+}
+
+@media (max-width: 991px) {
+    /* line 19, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .blog_details_part .blog_details_content p {
+        margin: 10px 0;
+    }
+}
+
+/* line 27, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.blog_details_part .blog_details_text span {
+    margin: 25px 0 25px 45px;
+    display: inline-block;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 30px;
+    border-left: 2px solid #7c32ff;
+    padding-left: 30px;
+}
+
+@media (max-width: 991px) {
+    /* line 27, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .blog_details_part .blog_details_text span {
+        margin: 15px 0 15px 10px;
+        padding-left: 10px;
+    }
+}
+
+/* line 41, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.blog_details_part .btn_2 {
+    padding: 8px 22px;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+/* line 47, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.author_details {
+    padding: 40px;
+    background-color: #f4f7f9;
+    margin-top: 61px;
+    display: flex;
+}
+
+@media (max-width: 575px) {
+    /* line 47, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .author_details {
+        margin-top: 30px;
+        padding: 15px;
+        display: block;
+    }
+    /* line 56, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .author_details .author_img {
+        margin-bottom: 20px;
+    }
+    /* line 58, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .author_details .author_img img {
+        width: 100%;
+    }
+}
+
+/* line 63, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.author_details .author_details_content {
+    padding-left: 30px;
+}
+
+@media (max-width: 575px) {
+    /* line 63, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .author_details .author_details_content {
+        padding-left: 0;
+    }
+}
+
+/* line 68, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.author_details .author_details_content h4 {
+    font-size: 16px;
+}
+
+/* line 72, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.author_details .author_details_content p {
+    margin: 5px 0 15px;
+}
+
+/* line 78, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.author_details .author_social_icon a {
+    border-radius: 50%;
+    background-color: white;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    text-align: center;
+    line-height: 36px;
+    color: #b5babf;
+    margin-right: 10px;
+}
+
+/* line 91, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area {
+    margin-top: 80px;
+}
+
+/* line 93, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .author_tittle {
+    display: flex;
+    align-items: center;
+}
+
+/* line 96, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .author_tittle p {
+    margin: 0;
+    line-height: 15px;
+}
+
+/* line 100, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .author_tittle h5 {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+/* line 104, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .author_tittle span {
+    margin: 0 20px;
+}
+
+/* line 108, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area h4 {
+    font-size: 16px;
+}
+
+/* line 111, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .media {
+    margin-top: 50px;
+}
+
+@media (max-width: 575px) {
+    /* line 111, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .comment_area .media {
+        display: block;
+    }
+}
+
+/* line 116, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .media img {
+    max-width: 40px;
+    border-radius: 50%;
+}
+
+/* line 121, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area span {
+    color: #8f8f8f;
+}
+
+/* line 124, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .btn_2 {
+    background-color: #f4f7f9;
+    color: #222 !important;
+}
+
+/* line 128, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area p {
+    margin: 9px 0 !important;
+}
+
+/* line 131, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .media-body {
+    padding-left: 30px;
+}
+
+@media (max-width: 575px) {
+    /* line 131, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+    .comment_area .media-body {
+        padding-left: 0;
+        margin-top: 15px;
+    }
+}
+
+/* line 138, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .btn_2 {
+    margin-top: 5px;
+}
+
+/* line 140, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_area .btn_2:hover {
+    background-color: #7c32ff !important;
+    color: #fff !important;
+}
+
+/* line 146, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form {
+    margin-top: 75px;
+}
+
+/* line 148, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form h4 {
+    font-size: 16px;
+}
+
+/* line 151, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row {
+    margin-top: 45px;
+}
+
+/* line 153, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row .form-group {
+    margin-bottom: 25px;
+}
+
+/* line 156, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row label {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    display: block;
+    font-size: 11px;
+    font-weight: 300;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+/* line 166, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row textarea, .comment_form .form-row input {
+    padding: 15px 20px;
+    border: 1px solid #e4e7e9;
+    border-radius: 0;
+    color: #8f8f8f;
+    display: block;
+    width: 100%;
+    font-weight: 300;
+}
+
+/* line 176, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row textarea {
+    height: 160px;
+}
+
+/* line 180, /Applications/MAMP/htdocs/amazcart/amazcart/scss/_blog_details.scss */
+.comment_form .form-row .btn_1 {
+    margin-top: 5px;
+}
+
+/************** blog details css end *************/
+@media (min-width: 1200px) {
+    .blog_part .container {
+        max-width: 1380px;
+    }
+
+}
+
+.comment_area .btn_2 {
+    cursor: pointer!important;
+
+}

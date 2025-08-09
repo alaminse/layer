@@ -1,0 +1,15 @@
+{
+    "CustomField" : [
+        "custom_fields.php"
+    ],
+    "Finance" : [
+        "finance.php"
+    ],
+    "CasePrint" : [
+        "caseprint.php"
+    ],
+    "EmailTemplate" : [
+        "email_templates.php"
+    ]
+
+}

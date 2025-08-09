@@ -1,0 +1,20 @@
+{
+    "Setting": true,
+    "Attendance": true,
+    "Payroll": true,
+    "Leave": true,
+    "Task": true,
+    "Todo": true,
+    "Localization": true,
+    "ModuleManager": true,
+    "CustomField": false,
+    "ClientLogin": false,
+    "Finance": false,
+    "EmailtoCL": false,
+    "CasePrint": false,
+    "EmailTemplate": false,
+    "Appointment": false,
+    "Registration": false,
+    "AdvSaas": false,
+    "Zoom": false
+}

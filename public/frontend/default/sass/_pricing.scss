@@ -1,0 +1,156 @@
+.package_name {
+  padding: 13px 20px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: capitalize;
+  border-radius: 30px;
+  background: #65bd53;
+  display: inline-block;
+  color: #fff;
+  min-width: 200px;
+  text-align: center;
+  &.style2 {
+    background: #4091ca;
+  }
+  &.style3 {
+    background: #59c2b9;
+  }
+  &.style4 {
+    background: #e3765b;
+  }
+}
+.pricing_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  padding-left: 1px;
+  @media #{$tab} {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  @media #{$small_mobile} {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+.sales_pricing_box {
+  border: 1px solid #eceef4;
+  padding: 40px;
+  min-height: 660px;
+  margin-right: -1px;
+  @media #{$tab} {
+    padding: 25px;
+  }
+  .sales_pricing_head {
+    border-bottom: 1px solid #eceef4;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    .prise_tag {
+      position: relative;
+      margin: 22px 0 0px 0;
+      .prise_icon {
+        font-size: 18px;
+        font-weight: 600;
+        position: relative;
+        top: -15px;
+      }
+      .prise_value {
+        font-size: 60px;
+        font-weight: 600;
+      }
+      .prise_year {
+        font-size: 14px;
+        font-weight: 500;
+        color: #828bb2;
+        position: relative;
+        top: 12px;
+      }
+    }
+    p {
+      font-size: 14px;
+      line-height: 21px;
+      color: #828bb2;
+      font-weight: 400;
+      max-width: 221px;
+      margin: 0 auto;
+    }
+  }
+  .sales_pricing_body {
+    margin-bottom: 30px;
+    li {
+      font-weight: 500;
+      font-size: 14px;
+      color: #828bb2;
+      padding-left: 35px;
+      position: relative;
+      line-height: 34px;
+      &::before {
+        content: "\e61a";
+        font-family: "themify";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 900;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// sales_pricing_wrapper
+.sales_pricing_wrapper {
+  background: #ffffff;
+  box-shadow: 0px 10px 15px rgba(235, 215, 241, 0.22);
+  border-radius: 10px;
+  padding: 80px 120px 60px 120px;
+  @media #{$tab} {
+    padding: 30px 20px;
+  }
+}
+.pricing_title {
+  font-size: 30px;
+  line-height: 45px;
+  margin: auto;
+  text-align: center;
+  @media #{$tab} {
+    font-size: 25px;
+    line-height: 40px;
+  }
+}
+// tab
+.sales_pricing_tab {
+  background: #f5f7fb;
+  border: 1px solid #eceef4;
+  box-sizing: border-box;
+  border-radius: 50px;
+  margin: 45px auto 50px auto;
+  padding: 4px;
+  @media #{$tab} {
+    margin: 20px auto 20px auto;
+  }
+  .nav-item {
+    .nav-link {
+      font-weight: 600;
+      font-size: 14px;
+      color: #415094;
+      text-transform: uppercase;
+      border-radius: 50px;
+      text-transform: uppercase;
+      padding: 13px 42px;
+      display: inline-block;
+      @media #{$small_mobile} {
+        padding: 7px 11px;
+        font-size: 12px;
+      }
+      &.active {
+        background: linear-gradient(90deg, #7d33ff 0%, #c739d9 100%);
+        border-radius: 50px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+.theme_text_hover {
+  color: #415094;
+}
+.theme_text_hover:hover {
+  color: #7c32ff !important;
+}

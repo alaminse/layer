@@ -1,0 +1,29 @@
+// variable scss
+@import "variables";
+
+// mixin scss
+@import "mixins";
+@import "extends";
+// default scss
+@import "common";
+
+// button scss
+@import "button";
+
+// body scss
+@import "menu";
+@import "banner";
+@import "about";
+@import "feature_part";
+@import "video_section_text";
+@import "all_feature";
+@import "our_speciality";
+@import "contact_us";
+@import "footer_section";
+@import "sales";
+@import "welcome";
+@import "pricing";
+@import "cart";
+@import "login";
+@import "landing";
+@import "starter_product";
