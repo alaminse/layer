@@ -15,6 +15,7 @@ class CreateCaseCategoriesTable extends Migration
     {
         Schema::create('case_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();

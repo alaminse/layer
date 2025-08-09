@@ -13,6 +13,7 @@ class CreateContactsTable extends Migration {
 	public function up() {
 		Schema::create('contacts', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->bigInteger('contact_category_id')->nullable()->unsigned();
 			$table->foreign('contact_category_id')->references('id')
 				->on('contact_categories')->onDelete('cascade');

@@ -16,6 +16,7 @@ class CreateSearchLinksTable extends Migration
     {
         Schema::create('search_links', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->string('route');
             $table->timestamps();
@@ -27,7 +28,7 @@ class CreateSearchLinksTable extends Migration
 
 
     //     ['id'  => 1, 'name' => 'Dashboard', 'route' => route('home')], //Main menu
-      
+
     //     // settings
     //     ['id'  => 66, 'name' => 'Settings', 'route' => route('setting.index')],
 
@@ -72,11 +73,11 @@ class CreateSearchLinksTable extends Migration
     //     ['id'  => 379, 'name' => 'Task', 'route' => route('task.index')],
 
     //     ['id'  => 500, 'name' => 'System Update', 'route' => route('setting.updatesystem')]
-    
-    // ];
-        
 
-        
+    // ];
+
+
+
             // DB::table('search_links')->insert($sql);
 
     }

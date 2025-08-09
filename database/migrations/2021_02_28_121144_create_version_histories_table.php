@@ -15,6 +15,7 @@ class CreateVersionHistoriesTable extends Migration
     {
         Schema::create('version_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->string('version')->nullable();
             $table->string('release_date')->nullable();
             $table->string('url')->nullable();

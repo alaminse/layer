@@ -13,6 +13,7 @@ class CreateClientCategoriesTable extends Migration {
 	public function up() {
 		Schema::create('client_categories', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('name')->nullable();
 			$table->boolean('plaintiff')->default(0);
 			$table->longText('description')->nullable();

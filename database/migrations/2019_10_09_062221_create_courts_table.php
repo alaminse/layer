@@ -13,6 +13,7 @@ class CreateCourtsTable extends Migration {
 	public function up() {
 		Schema::create('courts', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('name');
 			$table->string('location')->nullable();
 			$table->string('room_number')->nullable();

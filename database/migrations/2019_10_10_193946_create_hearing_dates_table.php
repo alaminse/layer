@@ -13,6 +13,7 @@ class CreateHearingDatesTable extends Migration {
 	public function up() {
 		Schema::create('hearing_dates', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->bigInteger('cases_id')->nullable()->unsigned();
 			$table->foreign('cases_id')->references('id')
 				->on('cases')->onDelete('cascade');

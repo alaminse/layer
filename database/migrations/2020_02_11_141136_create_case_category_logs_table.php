@@ -15,6 +15,7 @@ class CreateCaseCategoryLogsTable extends Migration
     {
         Schema::create('case_category_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->date('date')->nullable();
             $table->string('case_id')->nullable();
             $table->string('category_id')->nullable();

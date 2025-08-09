@@ -13,7 +13,7 @@ class CreateCasesTable extends Migration {
 	public function up() {
 		Schema::create('cases', function (Blueprint $table) {
 			$table->bigIncrements('id');
-
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('title');
 			$table->string('case_no')->nullable();
 			$table->string('file_no')->nullable();

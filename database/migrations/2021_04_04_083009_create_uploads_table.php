@@ -17,7 +17,7 @@ class CreateUploadsTable extends Migration
             $table->id();
 
             $table->uuid('uuid')->nullable();
-
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

@@ -16,6 +16,7 @@ class CreateEmployeesTable extends Migration {
 			$table->uuid('uuid')->nullable();
 			$table->unsignedBigInteger('user_id')->nullable();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->integer('code')->default(0);
 			$table->string('first_name')->nullable();
 			$table->string('middle_name')->nullable();
