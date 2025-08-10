@@ -57,11 +57,11 @@
                         </li>
 
                         <li class="nav-item edit-button">
-                            @if(permissionCheck('contact.edit'))
+                            @can('contact.edit')
                                 <a href="{{ route('contact.edit', $model->id) }}" class="primary-btn small fix-gr-bg"
                                 >{{ __('common.Edit') }}
                                 </a>
-                            @endif
+                            @endcan
                         </li>
                     </ul>
                     <!-- Tab panes -->

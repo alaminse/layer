@@ -71,6 +71,10 @@ class TaskSeeder extends Seeder
             'attendances.index',
             'attendance_report.index', 'attendance_report.search',
             'payroll_reports.index', 'payroll_reports.search',
+
+            'legal.contract.index','client.legal-contracts.view','legal.contract.assign','legal.contract.create','legal.contract.edit','legal.contract.show','client.index', 'client.create', 'client.edit', 'client.show','client.legal-contract.assign','client.category.index', 'client.category.create', 'client.category.edit', 'client.category.show'
+
+            
         ];
 
         // Create permissions
@@ -88,6 +92,16 @@ class TaskSeeder extends Seeder
         $admin = User::find(1);
         if ($admin) {
             $admin->assignRole($adminRole);
+        }
+        $userRole = Role::firstOrCreate(['name' => 'organiaztion', 'guard_name' => 'web']);
+
+        // Give all permissions to Admin role
+        $userRole->syncPermissions($permissions);
+
+        // Assign Admin role to user id = 1
+        $user = User::find(2);
+        if ($user) {
+            $user->assignRole($userRole);
         }
     }
 

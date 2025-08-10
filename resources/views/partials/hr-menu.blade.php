@@ -59,18 +59,18 @@
                     class="{{ spn_active_link($staffs, 'active') }}">{{ __('common.Staff') }}</a>
             </li>
             @endcan
-            @canany('permission.roles.index')
+            {{-- @canany('permission.roles.index') --}}
                 <li>
                     <a href="{{ route('roles.index') }}"
                         class="{{ Route::is('roles.*') ? 'active' : '' }}">{{ __('role.Role') }}</a>
                 </li>
-            @endcan
-            @canany('permission.permissions.index')
+            {{-- @endcan
+            @canany('permission.permissions.index') --}}
                 <li>
                     <a href="{{ route('permissions.index') }}"
                         class="{{ Route::is('permissions.*') ? 'active' : '' }}">Permissions</a>
                 </li>
-            @endcan
+            {{-- @endcan --}}
             @canany(['organization.list', 'organization.create', 'organization.edit', 'organization.delete'])
                 <li>
                     <a href="{{ route('organizations.index') }}"

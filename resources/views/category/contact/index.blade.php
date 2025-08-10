@@ -11,9 +11,9 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px" >{{ __('contact.Contact Category') }}</h3>
                             <ul class="d-flex">
-                                 @if(permissionCheck('category.contact.store'))
+                                 @can('contact.category.store')
                                 <li><a class="primary-btn radius_30px mr-10 fix-gr-bg" href="{{ route('category.contact.create') }}"><i class="ti-plus"></i>{{ __('contact.New Category') }}</a></li>
-                                @endif
+                                @endcan
                             </ul>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $model->name }}</td>
                                             <td>{!! $model->description !!}</td>
-                                           
+
                                             <td>
 
 
@@ -51,24 +51,24 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
 
-                                                        @if(permissionCheck('category.contact.edit'))
+                                                        @can('contact.category.edit')
                                                         <a href="{{ route('category.contact.edit', $model->id) }}"
                                                         class="dropdown-item"><i class="icon-pencil"></i>  {{ __('common.Edit') }}</a>
-                                                        @endif
+                                                        @endcan
 
-                                                        
-                                                        @if(permissionCheck('category.contact.destroy'))
+
+                                                        @can('contact.category.destroy')
                                                         <span id="delete_item" data-id="{{ $model->id }}" data-url="{{ route
                                                         ('category.contact.destroy', $model->id)
                                                         }}"
                                                         class="dropdown-item"><i class="icon-trash"></i>
                                                             {{ __('common.Delete') }} </span>
-                                                        @endif
+                                                        @endcan
 
                                                         </div>
                                                     </div>
 
-                                               
+
                                             </td>
                                         </tr>
                                         @endforeach
@@ -90,7 +90,7 @@
 
     <script>
         $(document).ready(function() {
-           
+
         });
 
     </script>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ClientCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class ClientController extends Controller
@@ -21,7 +22,12 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $models = ClientCategory::get();
+        $models = ClientCategory::query();
+        if (isNonAdminWithOrg()) {
+            $models = $models->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $models = $models->latest()->get();
         return view('category.client.index', compact('models'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use App\Models\ContactCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class ContactController extends Controller {
@@ -18,8 +19,15 @@ class ContactController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index() {
-		$models = ContactCategory::all();
+	public function index()
+    {
+        $models = ContactCategory::query();
+        if (isNonAdminWithOrg()) {
+            $models = $models->where('organization_id', Auth::user()->organization_id);
+        }
+        
+        $models = $models->latest()->get(); // or handle differently
+
 		return view('category.contact.index', compact('models'));
 	}
 

@@ -32,7 +32,7 @@
             </li>
         </ul>
     @else
-        {{-- @if (auth()->user()->role_id) --}}
+        @if (auth()->user()->role_id)
             <ul id="sidebar_menu">
 
                 <li>
@@ -66,11 +66,11 @@
 
                 @endif
 
-                {{-- @if (permissionCheck('contact.index')) --}}
+                @can('contact.index')
 
                     @php
                         $contact = ['contact.index', 'contact.create', 'contact.edit', 'contact.show'];
-                        $category = ['category.contact.index', 'category.contact.create', 'category.contact.edit', 'category.contact.show'];
+                        $category = ['contact.category.index', 'contact.category.create', 'contact.category.edit', 'contact.category.show'];
                         $nav = array_merge($contact, $category);
                     @endphp
 
@@ -90,21 +90,21 @@
                                    class="{{ spn_active_link($contact, 'active') }}">
                                     {{ __('contact.Contact List') }}</a>
                             </li>
-                            {{-- @if (permissionCheck('category.contact.index')) --}}
+                            @can ('contact.category.index')
                                 <li>
                                     <a href="{{ route('category.contact.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">{{ __('contact.Contact  Category') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endcan
                         </ul>
                     </li>
-                {{-- @endif --}}
+                @endcan
 
-                {{-- @if (permissionCheck('client')) --}}
+                @can ('client.index')
                     @php
                         $legalContracts = ['legal.contract.index','client.legal-contracts.view','legal.contract.assign','legal.contract.create','legal.contract.edit','legal.contract.show'];
                         $client = ['client.index', 'client.create', 'client.edit', 'client.show','client.legal-contract.assign'];
-                        $category = ['category.client.index', 'category.client.create', 'category.client.edit', 'category.client.show'];
+                        $category = ['client.category.index', 'client.category.create', 'client.category.edit', 'client.category.show'];
                         $nav = array_merge($client, $category, $legalContracts, ['client.settings','client.pending.list',]);
 
                     @endphp
@@ -121,28 +121,28 @@
                             </div>
                         </a>
                         <ul>
-                            {{-- @if (permissionCheck('client.index')) --}}
+                            @can ('client.index')
                                 <li>
                                     <a href="{{ route('client.index') }}"
                                        class="{{ spn_active_link($client, 'active') }}">
                                         {{ __('client.Client List') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endcan
 
-                            {{-- @if (permissionCheck('category.client.index')) --}}
+                            @can ('client.category.index')
                                 <li>
                                     <a href="{{ route('category.client.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">{{ __('client.Category') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endcan
                             @if(moduleStatusCheck('ClientLogin'))
                                 @includeIf('clientlogin::menu')
                             @endif
                         </ul>
                     </li>
-                {{-- @endif --}}
+                @endif
 
-                {{-- @if (permissionCheck('case.index')) --}}
+                {{-- @if (permissionCheck('case.index'))
                     @php
                         $case = ['case.index', 'case.edit', 'case.show', 'date.create', 'date.edit', 'putlist.create', 'putlist.edit', 'judgement.create', 'judgement.edit', 'case.court.change', 'date.send_mail'];
                         $category = ['category.case.index', 'category.case.create', 'category.case.edit', 'category.case.show'];
@@ -163,13 +163,13 @@
                             </div>
                         </a>
                         <ul>
-                            {{-- @if (permissionCheck('causelist.index')) --}}
+                            @if (permissionCheck('causelist.index'))
                                 <li>
                                     <a href="{{ route('causelist.index') }}"
                                        class="{{ spn_active_link('causelist.index', 'active') }}">
                                         {{ __('case.Cause List') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
                             <li>
                                 <a href="{{ route('case.index') }}"
@@ -191,13 +191,13 @@
 
 
                             </li>
-                            {{-- @if(permissionCheck('case.store')) --}}
+                            @if(permissionCheck('case.store'))
                                 <li>
                                     <a href="{{ route('case.create') }}"
                                        class="{{ spn_active_link('case.create', 'active') }}"> {{ __('case.Add New Case') }}</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if(moduleStatusCheck('ClientLogin')) --}}
+                            @endif
+                            @if(moduleStatusCheck('ClientLogin'))
                                 <li>
                                     <a href="{{ route('case.pending-case') }}"
                                        class="{{ (isset($page_title) and $page_title == 'Pending') ? 'active' : '' }}">
@@ -209,21 +209,21 @@
 
                                     </a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('category.case.index')) --}}
+                            @endif
+                            @if (permissionCheck('category.case.index'))
                                 <li>
                                     <a href="{{ route('category.case.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">{{ __('case.Case  Category') }}</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('category.subcase.index')) --}}
+                            @endif
+                            @if (permissionCheck('category.subcase.index'))
                                 <li>
                                     <a href="{{ route('category.subcase.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">Case Sub Category</a>
                                 </li>
-                            {{-- @endif --}}
-            
-                            {{-- @if (permissionCheck('judgement.index')) --}}
+                            @endif
+
+                            @if (permissionCheck('judgement.index'))
                                 <li>
                                     <a href="{{ route('judgement.index') }}"
                                        class="{{ spn_active_link(['judgement.index', 'judgement.reopen', 'judgement.close'], 'active') }}">
@@ -234,8 +234,8 @@
                                     </a>
 
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('judgement.closed')) --}}
+                            @endif
+                            @if (permissionCheck('judgement.closed'))
                                 <li>
                                     <a href="{{ route('judgement.closed') }}"
                                        class="{{ spn_active_link(['judgement.closed'], 'active') }}">
@@ -245,21 +245,21 @@
                                     </span>
                                     </a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
-                            {{-- @if (permissionCheck('case.filter')) --}}
+                            @if (permissionCheck('case.filter'))
                                 <li>
                                     <a href="{{ route('case.filter') }}"
                                        class="{{ spn_active_link(['case.filter'], 'active') }}">
                                         {{ __('case.Filter Case') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
                         </ul>
                     </li>
-                {{-- @endif --}}
+                @endif --}}
 
-                {{-- @if (permissionCheck('lawyer.index')) --}}
+                {{-- @if (permissionCheck('lawyer.index'))
                     @php
                         $lawyer = ['lawyer.index', 'lawyer.create', 'lawyer.edit', 'lawyer.show'];
                     @endphp
@@ -274,10 +274,10 @@
                             </div>
                         </a>
                     </li>
-                {{-- @endif --}}
+                @endif --}}
 
 
-                {{-- @if (permissionCheck('lobbying.index')) --}}
+                {{-- @if (permissionCheck('lobbying.index'))
                     <li class="{{ spn_active_link(['lobbying.index', 'lobbying.edit', 'lobbying.show'], 'mm-active') }}">
                         <a href="{{ route('lobbying.index') }}">
                             <div class="nav_icon_small">
@@ -288,8 +288,8 @@
                             </div>
                         </a>
                     </li>
-                {{-- @endif --}}
-                {{-- @if (permissionCheck('putlist.index')) --}}
+                @endif --}}
+                {{-- @if (permissionCheck('putlist.index'))
                     <li class="{{ spn_active_link('putlist.index', 'mm-active') }}">
                         <a href="{{ route('putlist.index') }}">
                             <div class="nav_icon_small">
@@ -300,11 +300,11 @@
                             </div>
                         </a>
                     </li>
-                {{-- @endif --}}
+                @endif --}}
 
 
 
-                {{-- @if (permissionCheck('court.index')) --}}
+                {{-- @if (permissionCheck('court.index'))
                     @php
                         $court = ['master.court.index', 'master.court.edit', 'master.court.show', 'master.court.create'];
                         $category = ['category.court.index', 'category.court.create', 'category.court.edit', 'category.court.show'];
@@ -322,29 +322,29 @@
                             </div>
                         </a>
                         <ul>
-                            {{-- @if (permissionCheck('master.court.index')) --}}
+                            @if (permissionCheck('master.court.index'))
                                 <li>
                                     <a href="{{ route('master.court.index') }}"
                                        class="{{ spn_active_link($court, 'active') }}">
                                         {{ __('court.Court List') }}</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('category.court.index')) --}}
+                            @endif
+                            @if (permissionCheck('category.court.index'))
                                 <li>
                                     <a href="{{ route('category.court.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">
                                         {{ __('court.Court Category') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
                         </ul>
                     </li>
 
-                {{-- @endif --}}
-                @if(moduleStatusCheck('Appointment'))
+                @endif --}}
+                {{-- @if(moduleStatusCheck('Appointment'))
                     @includeIf('appointment::menu')
                 @else
-                    {{-- @if (permissionCheck('appointment.index')) --}}
+                    @if (permissionCheck('appointment.index'))
                         @php
                             $appoinment = ['appointment.index', 'appointment.create', 'appointment.edit', 'appointment.show'];
                         @endphp
@@ -360,23 +360,23 @@
                                 </a>
                             </li>
                         @endif
-                    {{-- @endif --}}
-                @endif
-                @if(moduleStatusCheck('Zoom'))
+                    @endif
+                @endif --}}
+                {{-- @if(moduleStatusCheck('Zoom'))
                     @if (permissionCheck('zoom'))
                         @include('zoom::menu.zoom')
                     @endif
-                @endif
-                @include('task::menu')
-                @include('todo::menu')
+                @endif --}}
+                {{-- @include('task::menu') --}}
+                {{-- @include('todo::menu') --}}
                 @include('partials.hr-menu')
-                @include('leave::menu')
-                @if(moduleStatusCheck('CasePrint'))
+                {{-- @include('leave::menu') --}}
+                {{-- @if(moduleStatusCheck('CasePrint'))
                     @includeIf('caseprint::menu')
-                @endif
+                @endif --}}
 
 
-                {{-- @if (permissionCheck('setup')) --}}
+                {{-- @if (permissionCheck('setup'))
                     @php
                         $stage = ['master.stage.index', 'master.stage.edit', 'master.stage.show', 'master.stage.create'];
                         $act = ['master.act.index', 'master.act.edit', 'master.act.show', 'master.act.create'];
@@ -398,64 +398,64 @@
                             </div>
                         </a>
                         <ul>
-                            {{-- @if (permissionCheck('master.stage.index')) --}}
+                            @if (permissionCheck('master.stage.index'))
                                 <li>
                                     <a href="{{ route('master.stage.index') }}"
                                        class="{{ spn_active_link($stage, 'active') }}">
                                         {{ __('case.Case Stage') }}</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('master.act.index')) --}}
+                            @endif
+                            @if (permissionCheck('master.act.index'))
                                 <li>
                                     <a href="{{ route('master.act.index') }}"
                                        class="{{ spn_active_link($act, 'active') }}">{{ __('case.Act') }}</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (permissionCheck('setup.city.index') && !moduleStatusCheck('AdvSaas')) --}}
+                            @endif
+                            @if (permissionCheck('setup.city.index') && !moduleStatusCheck('AdvSaas'))
                                 <li>
                                     <a href="{{ route('setup.city.index') }}"
                                        class="{{ spn_active_link($city, 'active') }}">{{ __('setting.City') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
-                            {{-- @if (permissionCheck('setup.state.index') && !moduleStatusCheck('AdvSaas')) --}}
+                            @if (permissionCheck('setup.state.index') && !moduleStatusCheck('AdvSaas'))
                                 <li>
                                     <a href="{{ route('setup.state.index') }}"
                                        class="{{ spn_active_link($state, 'active') }}">{{ __('setting.State') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
-                            {{-- @if (permissionCheck('setup.country.index') && !moduleStatusCheck('AdvSaas')) --}}
+                            @if (permissionCheck('setup.country.index') && !moduleStatusCheck('AdvSaas'))
                                 <li>
                                     <a href="{{ route('setup.country.index') }}"
                                        class="{{ spn_active_link($country, 'active') }}">{{ __('court.Country') }}</a>
                                 </li>
-                            {{-- @endif --}}
+                            @endif
 
                         </ul>
                     </li>
-                {{-- @endif --}}
+                @endif --}}
 
 
-                @if(moduleStatusCheck('CustomField'))
+                {{-- @if(moduleStatusCheck('CustomField'))
                     @includeIf('customfield::menu')
-                @endif
+                @endif --}}
 
-                @if(moduleStatusCheck('Finance'))
+                {{-- @if(moduleStatusCheck('Finance'))
                     @includeIf('finance::menu')
-                @endif
+                @endif --}}
 
-                @if(moduleStatusCheck('EmailTemplate'))
+                {{-- @if(moduleStatusCheck('EmailTemplate'))
                     @includeIf('emailtemplate::menu')
-                @endif
+                @endif --}}
 
-                @includeIf('setting::menu')
+                {{-- @includeIf('setting::menu') --}}
             </ul>
-        {{-- @else --}}
+        @else
             @if(moduleStatusCheck('ClientLogin'))
                 @includeIf('clientlogin::sidebar')
             @endif
-        {{-- @endif --}}
+        @endif
     @endif
 </nav>
 <!-- sidebar part end -->

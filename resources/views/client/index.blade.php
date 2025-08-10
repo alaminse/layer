@@ -11,11 +11,11 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px">{{ __('client.Client List') }}</h3>
                             <ul class="d-flex">
-                                @if(permissionCheck('client.store'))
+                                @can('client.store')
                                     <li><a class="primary-btn radius_30px mr-10 fix-gr-bg"
                                            href="{{ route('client.create') }}"><i class="ti-plus"></i>{{ __
                         ('client.New Client') }}</a></li>
-                                @endif
+                                @endcan
                             </ul>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{-- @foreach($models as $model)
+                                    @foreach($models as $model)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>
@@ -70,26 +70,26 @@
                                                     <div class="dropdown-menu dropdown-menu-right"
                                                          aria-labelledby="dropdownMenu2">
                                                         @if(moduleStatusCheck('ClientLogin'))
-                                                            @if(permissionCheck('client.legal-contract.assign'))
+                                                            @can('client.legal-contract.assign')
                                                                 <a href="{{ route('client.legal-contract.assign', [$model->id]) }}"
                                                                     class="dropdown-item edit_brand">{{__('client.Legal Contract')}}</a>
-                                                            @endif
+                                                            @endcan
                                                         @endif
-                                                        @if(permissionCheck('client.show'))
+                                                        @can('client.show')
                                                             <a href="{{ route('client.show', $model->id) }}"
                                                                class="dropdown-item edit_brand">{{__('common.Show')}}</a>
-                                                        @endif
-                                                        @if(permissionCheck('client.edit'))
+                                                        @endcan
+                                                        @can('client.edit')
                                                             <a href="{{ route('client.edit', $model->id) }}"
                                                                class="dropdown-item edit_brand">{{__('common.Edit')}}</a>
-                                                        @endif
-                                                        @if(permissionCheck('client.destroy'))
+                                                        @endcan
+                                                        @can('client.destroy')
                                                             <span id="delete_item" data-id="{{ $model->id }}" data-url="{{ route
                                                                     ('client.destroy', $model->id)
                                                                     }}"
                                                                   class="dropdown-item"><i class="icon-trash"></i>
                                                                         {{ __('common.Delete') }} </span>
-                                                        @endif
+                                                        @endcan
 
 
                                                     </div>
@@ -98,7 +98,7 @@
 
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

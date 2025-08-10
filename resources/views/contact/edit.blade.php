@@ -24,13 +24,13 @@
                             <div class="primary_input col-md-12">
                                 <div class="d-flex justify-content-between">
                                     {{Form::label('contact_category_id', __('contact.Category'))}}
-                                    @if(permissionCheck('category.contact.store'))
+                                    @can('contact.category.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('category.contact.create', ['quick_add' => true]) }}"
                                                class="btn-modal"
                                                data-container="contact_category_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{Form::select('contact_category_id', $contact_categories, null, ['class' => 'primary_select', 'data-placeholder' => __('contact.Select Designation'),  'data-parsley-errors-container' => '#contact_category_id_error'])}}
                                 <span id="contact_category_id_error"></span>

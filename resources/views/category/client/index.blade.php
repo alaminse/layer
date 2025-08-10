@@ -11,9 +11,9 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px" >{{ __('client.Category') }}</h3>
                             <ul class="d-flex">
-                            @if(permissionCheck('category.client.store'))
+                            @can('client.category.store')
                                 <li><a class="primary-btn radius_30px mr-10 fix-gr-bg" href="{{ route('category.client.create') }}"><i class="ti-plus"></i>{{ __('client.Add Category') }}</a></li>
-                            @endif
+                            @endcan
                             </ul>
                         </div>
                     </div>
@@ -54,17 +54,17 @@
                                                             {{ __('common.Select') }}
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                                        @if(permissionCheck('category.client.edit'))
+                                                        @can('client.category.edit')
                                                         <a href="{{ route('category.client.edit', $model->id) }}"
                                                         class="dropdown-item"><i class="icon-pencil"></i>  {{ __('common.Edit') }}</a>
-                                                        @endif
-                                                        @if(permissionCheck('category.client.destroy'))
+                                                        @endcan
+                                                        @can('client.category.destroy')
                                                         <span id="delete_item" data-id="{{ $model->id }}" data-url="{{ route
                                                         ('category.client.destroy', $model->id)
                                                         }}"
                                                         class="dropdown-item"><i class="icon-trash"></i>
                                                             {{ __('common.Delete') }} </span>
-                                                        @endif
+                                                        @endcan
 
                                                         </div>
                                                     </div>
