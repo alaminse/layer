@@ -37,6 +37,8 @@ use Modules\ClientLogin\Entities\ClientCase;
 use Illuminate\Validation\ValidationException;
 use Modules\EmailtoCL\Jobs\SendMailToLawyerJob;
 use Modules\ClientLogin\Entities\ClientCaseUpload;
+use Illuminate\Support\Facades\Auth;
+
 
 class CaseController extends Controller
 {
@@ -105,21 +107,76 @@ class CaseController extends Controller
      *
      * @return Response
      */
+
     public function create()
     {
-        $data['clients'] = Client::when(moduleStatusCheck('ClientLogin'), function ($query) {
+        $clients = Client::query();
+        if (isNonAdminWithOrg()) {
+            $clients = $clients->where('organization_id', Auth::user()->organization_id);
+        }
+        $clients = $clients->when(moduleStatusCheck('ClientLogin'), function ($query) {
             $query->where('status', 'active');
         })->get()->pluck('name_type', 'id');
-        $data['client_categories'] = ClientCategory::all()->pluck('name', 'id')->prepend(__('client.Select Category'), '');
-        $data['staffs'] = User::whereNotIn('role_id', [1, 0])
+
+        $data['clients'] = $clients;
+
+
+        $client_categories = ClientCategory::query();
+        if (isNonAdminWithOrg()) {
+            $client_categories = $client_categories->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $data['client_categories'] = $client_categories->get()->pluck('name', 'id')->prepend(__('client.Select Category'), '');
+
+        $staffs = User::query();
+        if (isNonAdminWithOrg()) {
+            $staffs = $staffs->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['staffs'] = $staffs->whereNotIn('role_id', [1, 0])
             ->where('id', '!=', auth()->user()->id)->get()
             ->pluck('name', 'id');
-        $data['stages'] = Stage::all()->pluck('name', 'id')->prepend(__('case.Select Case Stage'), '');
-        $data['case_categories'] = CaseCategory::all()->pluck('name', 'id')->prepend(__('case.Select Case Categories'), '');
-        $data['case_sub_categories'] = CaseSubCategory::all()->pluck('name', 'id');
-        $data['court_categories'] = CourtCategory::all()->pluck('name', 'id')->prepend(__('case.Select Court Categories'), '');
-        $data['lawyers'] = Lawyer::all()->pluck('name', 'id');
-        $data['acts'] = Act::all()->pluck('name', 'id');
+
+        $stages = Stage::query();
+        if (isNonAdminWithOrg()) {
+            $stages = $stages->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['stages'] = $stages->get()->pluck('name', 'id')->prepend(__('case.Select Case Stage'), '');
+
+        $case_categories = CaseCategory::query();
+        if (isNonAdminWithOrg()) {
+            $case_categories = $case_categories->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['case_categories'] = $case_categories->get()->pluck('name', 'id')->prepend(__('case.Select Case Categories'), '');
+
+        $case_sub_categories = CaseSubCategory::query();
+
+        if (isNonAdminWithOrg()) {
+            $case_sub_categories = $case_sub_categories->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['case_sub_categories'] = $case_sub_categories->get()->pluck('name', 'id');
+
+
+        $court_categories = CourtCategory::query();
+
+        if (isNonAdminWithOrg()) {
+            $court_categories = $court_categories->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['court_categories'] = $court_categories->get()->pluck('name', 'id')->prepend(__('case.Select Court Categories'), '');
+
+        $lawyers = Lawyer::query();
+        if (isNonAdminWithOrg()) {
+            $lawyers = $lawyers->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['lawyers'] = $lawyers->get()->pluck('name', 'id');
+
+
+        $acts = Act::query();
+        if (isNonAdminWithOrg()) {
+            $acts = $acts->where('organization_id', Auth::user()->organization_id);
+        }
+        $data['acts'] = $acts->get()->pluck('name', 'id');
+
+
         $data['courts'] = ['' => __('case.Select Court')];
 
         $fields = null;
@@ -133,6 +190,34 @@ class CaseController extends Controller
         }
         return view('case.create', compact('data', 'fields'));
     }
+    // public function create()
+    // {
+    //     $data['clients'] = Client::when(moduleStatusCheck('ClientLogin'), function ($query) {
+    //         $query->where('status', 'active');
+    //     })->get()->pluck('name_type', 'id');
+    //     $data['client_categories'] = ClientCategory::all()->pluck('name', 'id')->prepend(__('client.Select Category'), '');
+    //     $data['staffs'] = User::whereNotIn('role_id', [1, 0])
+    //         ->where('id', '!=', auth()->user()->id)->get()
+    //         ->pluck('name', 'id');
+    //     $data['stages'] = Stage::all()->pluck('name', 'id')->prepend(__('case.Select Case Stage'), '');
+    //     $data['case_categories'] = CaseCategory::all()->pluck('name', 'id')->prepend(__('case.Select Case Categories'), '');
+    //     $data['case_sub_categories'] = CaseSubCategory::all()->pluck('name', 'id');
+    //     $data['court_categories'] = CourtCategory::all()->pluck('name', 'id')->prepend(__('case.Select Court Categories'), '');
+    //     $data['lawyers'] = Lawyer::all()->pluck('name', 'id');
+    //     $data['acts'] = Act::all()->pluck('name', 'id');
+    //     $data['courts'] = ['' => __('case.Select Court')];
+
+    //     $fields = null;
+
+    //     if (moduleStatusCheck('CustomField')) {
+    //         $fields = getFieldByType('case');
+    //     }
+    //     $config = Config::first();
+    //     if (getConfigValueByKey($config, 'case_layout') == 2) {
+    //         return view('case.create_case_layout_2', compact('data', 'fields'));
+    //     }
+    //     return view('case.create', compact('data', 'fields'));
+    // }
 
     public function store(Request $request)
     {
@@ -865,29 +950,29 @@ class CaseController extends Controller
                     return $q->where('plaintiff', $request->client_id)->orWhere('opposite', $request->client_id)->orWhere('client_id', $request->client_id);
                 });
             }
-    
+
             if ($request->acts) {
                 $data['models']->whereHas('acts', function ($q) use ($request) {
                     return $q->whereIn('acts_id', $request->acts);
                 });
             }
-    
+
             if ($request->stage_id) {
                 $data['models']->where('stage_id', $request->stage_id);
             }
-    
+
             if ($request->case_no) {
                 $data['models']->where('case_no', 'like', '%' . $request->case_no . '%');
             }
-    
+
             if ($request->file_no) {
                 $data['models']->where('file_no', 'like', '%' . $request->file_no . '%');
             }
-    
+
             if ($request->case_category_id) {
                 $data['models']->where('case_category_id', $request->case_category_id);
             }
-    
+
             if ($request->hearing_date) {
                 $data['models']->whereDate('hearing_date', $request->hearing_date);
             }
@@ -903,14 +988,14 @@ class CaseController extends Controller
             if ($request->court_id) {
                 $data['models']->where(['court_id' => $request->court_id]);
             }
-    
+
             if ($request->status) {
                 $data['models']->where(['status' => $request->status]);
             }
             if ($request->judgement_status) {
                 $data['models']->where(['judgement_status' => $request->judgement_status]);
             }
-    
+
             $data['models'] = $data['models']->orderBy('hearing_date', 'asc')->get();
 
         return view('case.filter', $data);

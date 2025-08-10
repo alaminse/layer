@@ -142,7 +142,7 @@
                     </li>
                 @endif
 
-                {{-- @if (permissionCheck('case.index'))
+                @can ('case.index')
                     @php
                         $case = ['case.index', 'case.edit', 'case.show', 'date.create', 'date.edit', 'putlist.create', 'putlist.edit', 'judgement.create', 'judgement.edit', 'case.court.change', 'date.send_mail'];
                         $category = ['category.case.index', 'category.case.create', 'category.case.edit', 'category.case.show'];
@@ -163,13 +163,13 @@
                             </div>
                         </a>
                         <ul>
-                            @if (permissionCheck('causelist.index'))
+                            @can ('causelist.index')
                                 <li>
                                     <a href="{{ route('causelist.index') }}"
                                        class="{{ spn_active_link('causelist.index', 'active') }}">
                                         {{ __('case.Cause List') }}</a>
                                 </li>
-                            @endif
+                            @endcan
 
                             <li>
                                 <a href="{{ route('case.index') }}"
@@ -191,12 +191,12 @@
 
 
                             </li>
-                            @if(permissionCheck('case.store'))
+                            @can('case.store')
                                 <li>
                                     <a href="{{ route('case.create') }}"
                                        class="{{ spn_active_link('case.create', 'active') }}"> {{ __('case.Add New Case') }}</a>
                                 </li>
-                            @endif
+                            @endcan
                             @if(moduleStatusCheck('ClientLogin'))
                                 <li>
                                     <a href="{{ route('case.pending-case') }}"
@@ -210,20 +210,20 @@
                                     </a>
                                 </li>
                             @endif
-                            @if (permissionCheck('category.case.index'))
+                            @can ('category.case.index')
                                 <li>
                                     <a href="{{ route('category.case.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">{{ __('case.Case  Category') }}</a>
                                 </li>
-                            @endif
-                            @if (permissionCheck('category.subcase.index'))
+                            @endcan
+                            @can ('category.subcase.index')
                                 <li>
                                     <a href="{{ route('category.subcase.index') }}"
                                        class="{{ spn_active_link($category, 'active') }}">Case Sub Category</a>
                                 </li>
-                            @endif
+                            @endcan
 
-                            @if (permissionCheck('judgement.index'))
+                            @can ('judgement.index')
                                 <li>
                                     <a href="{{ route('judgement.index') }}"
                                        class="{{ spn_active_link(['judgement.index', 'judgement.reopen', 'judgement.close'], 'active') }}">
@@ -234,8 +234,8 @@
                                     </a>
 
                                 </li>
-                            @endif
-                            @if (permissionCheck('judgement.closed'))
+                            @endcan
+                            @can ('judgement.closed')
                                 <li>
                                     <a href="{{ route('judgement.closed') }}"
                                        class="{{ spn_active_link(['judgement.closed'], 'active') }}">
@@ -245,19 +245,19 @@
                                     </span>
                                     </a>
                                 </li>
-                            @endif
+                            @endcan
 
-                            @if (permissionCheck('case.filter'))
+                            @can ('case.filter')
                                 <li>
                                     <a href="{{ route('case.filter') }}"
                                        class="{{ spn_active_link(['case.filter'], 'active') }}">
                                         {{ __('case.Filter Case') }}</a>
                                 </li>
-                            @endif
+                            @endcan
 
                         </ul>
                     </li>
-                @endif --}}
+                @endcan
 
                 {{-- @if (permissionCheck('lawyer.index'))
                     @php

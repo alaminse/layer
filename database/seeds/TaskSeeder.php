@@ -61,20 +61,23 @@ class TaskSeeder extends Seeder
         // ]);
 
         $permissions = [
-            'staffs.index', 'staffs.edit', 'staffs.view', 'staffs.create',
-            'permission.roles.index', 'permission.roles.edit', 'permission.roles.view', 'permission.roles.create',
-            'permission.permissions.index',
-            'events.index', 'events.edit', 'events.view', 'events.create',
-            'payroll.index', 'payroll.edit', 'payroll.view', 'payroll.create',
-            'genrate_payroll', 'staff_search_for_payroll',
-            'registration.lawyer.pending', 'registration.lawyer.approve', 'registration.lawyer.show',
-            'attendances.index',
-            'attendance_report.index', 'attendance_report.search',
-            'payroll_reports.index', 'payroll_reports.search',
+            // 'staffs.index', 'staffs.edit', 'staffs.view', 'staffs.create',
+            // 'permission.roles.index', 'permission.roles.edit', 'permission.roles.view', 'permission.roles.create',
+            // 'permission.permissions.index',
+            // 'events.index', 'events.edit', 'events.view', 'events.create',
+            // 'payroll.index', 'payroll.edit', 'payroll.view', 'payroll.create',
+            // 'genrate_payroll', 'staff_search_for_payroll',
+            // 'registration.lawyer.pending', 'registration.lawyer.approve', 'registration.lawyer.show',
+            // 'attendances.index',
+            // 'attendance_report.index', 'attendance_report.search',
+            // 'payroll_reports.index', 'payroll_reports.search',
 
-            'legal.contract.index','client.legal-contracts.view','legal.contract.assign','legal.contract.create','legal.contract.edit','legal.contract.show','client.index', 'client.create', 'client.edit', 'client.show','client.legal-contract.assign','client.category.index', 'client.category.create', 'client.category.edit', 'client.category.show'
+            // 'legal.contract.index','client.legal-contracts.view','legal.contract.assign','legal.contract.create','legal.contract.edit','legal.contract.show','client.index', 'client.create', 'client.edit', 'client.show','client.legal-contract.assign','client.category.index', 'client.category.create', 'client.category.edit', 'client.category.show'
+            'case.index', 'case.edit', 'case.show', 'date.create', 'date.edit', 'putlist.create', 'putlist.edit', 'judgement.create', 'judgement.edit', 'case.court.change', 'date.send_mail',
+            'category.case.index', 'category.case.create', 'category.case.edit', 'category.case.show',
 
-            
+            'causelist.index', 'case.create', 'judgement.index', 'judgement.closed', 'judgement.reopen', 'judgement.close', 'case.filter', 'case.pending-case'
+
         ];
 
         // Create permissions
@@ -82,27 +85,6 @@ class TaskSeeder extends Seeder
             Permission::firstOrCreate(['name' => $perm, 'guard_name' => 'web']);
         }
 
-        // Create Admin role if not exists
-        $adminRole = Role::firstOrCreate(['name' => 'Admin', 'guard_name' => 'web']);
-
-        // Give all permissions to Admin role
-        $adminRole->syncPermissions($permissions);
-
-        // Assign Admin role to user id = 1
-        $admin = User::find(1);
-        if ($admin) {
-            $admin->assignRole($adminRole);
-        }
-        $userRole = Role::firstOrCreate(['name' => 'organiaztion', 'guard_name' => 'web']);
-
-        // Give all permissions to Admin role
-        $userRole->syncPermissions($permissions);
-
-        // Assign Admin role to user id = 1
-        $user = User::find(2);
-        if ($user) {
-            $user->assignRole($userRole);
-        }
     }
 
 }

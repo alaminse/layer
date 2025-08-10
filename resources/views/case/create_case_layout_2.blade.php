@@ -23,13 +23,13 @@
 
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('client_id', __('case.Select Client'), ['class' => 'required']) }}
-                                    @if (permissionCheck('client.store'))
+                                    @can('client.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('client.create', ['quick_add' => true, 'client_id' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="client_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('client_id', $data['clients']->prepend(__('case.Select Client'), ''), isset($clientCaseModel)? $clientCaseModel->created_by:null, ['required' => '', 'id'=>'client_id', 'class' => 'primary_select', 'data-placeholder' => __('case.Select Client'), 'data-parsley-errors-container' => '#client_id_error']) }}
                                 <span id="client_id_error"></span>
@@ -89,13 +89,13 @@
                             <div class="primary_input col-md-6">
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('case_category_id', __('case.Case Category'), ['class' => 'required']) }}
-                                    @if (permissionCheck('category.case.store'))
+                                    @can('category.case.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('category.case.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="case_category_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
 
                                 {{ Form::select('case_category_id', $data['case_categories'], isset($clientCaseModel)?$clientCaseModel->case_category_id : null, ['required' => '', 'class' => 'primary_select', 'data-placeholder' => __('case.Select Case Category'), 'data-parsley-errors-container' => '#case_category_id_error']) }}
@@ -106,13 +106,13 @@
                             <div class="primary_input col-md-6">
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('case_sub_category_id', 'Case Sub Category') }}
-                                    @if (permissionCheck('category.subcase.store'))
+                                    @can('category.subcase.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('category.subcase.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="case_sub_category_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
 
                                 {{ Form::select('case_sub_category_id', $data['case_sub_categories'], isset($clientCaseModel)?$clientCaseModel->case_sub_category_id : null, ['required' => '', 'class' => 'primary_select', 'data-placeholder' => 'Select Sub Case Category', 'data-parsley-errors-container' => '#case_sub_category_id_error']) }}
@@ -134,13 +134,13 @@
 
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('acts', __('case.Case Acts'), ['class' => 'required']) }}
-                                    @if (permissionCheck('master.act.store'))
+                                    @can('master.act.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('master.act.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="act_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('acts[]', $data['acts'], null, ['required' => '', 'class' => 'primary_select', 'data-placeholder' => __('case.Select Acts'), 'data-parsley-errors-container' => '#act_error', 'multiple' => '', 'id' => 'acts']) }}
                                 <span id="act_error"></span>
@@ -152,13 +152,13 @@
 
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('court_category_id', __('case.Court Category'), ['class' => 'required']) }}
-                                    @if (permissionCheck('category.court.store'))
+                                    @can('category.court.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('category.court.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="court_category_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('court_category_id', $data['court_categories'], null, ['required' => '', 'class' => 'primary_select', 'data-placeholder' => __('case.Select Court Category'), 'data-parsley-errors-container' => '#court_category_id_error']) }}
                                 <span id="court_category_id_error"></span>
@@ -167,14 +167,14 @@
 
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('court_id', __('case.Court'), ['class' => 'required']) }}
-                                    @if (permissionCheck('master.court.store'))
+                                    @can('master.court.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('master.court.create', ['quick_add' => true]) }}"
                                                 class="btn-modal" data-depend="#court_category_id"
                                                 data-depend_text="{{ __('court.Please Select Court Category First') }}"
                                                 data-container="court_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('court_id', $data['courts'], null, ['required' => '', 'class' => 'primary_select', 'data-placeholder' => __('case.Select Court'), 'data-parsley-errors-container' => '#court_id_error']) }}
                                 <span id="court_id_error"></span>
@@ -206,13 +206,13 @@
                                         @endif
                                     </label>
 
-                                    @if (permissionCheck('lawyer.store'))
+                                    @can('lawyer.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('lawyer.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="lawyer_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('lawyer_id[]', $data['lawyers'], null, ['class' => 'primary_select', 'data-placeholder' => __('case.Select Lawyer'), 'data-parsley-errors-container' => '#lawyer_id_error', 'multiple', 'id' => 'lawyer_id']) }}
                                 <span id="lawyer_id_error"></span>
@@ -221,13 +221,13 @@
 
                                 <div class="d-flex justify-content-between">
                                     {{ Form::label('stage_id', __('case.Case Stage')) }}
-                                    @if (permissionCheck('master.stage.store'))
+                                    @can('master.stage.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('master.stage.create', ['quick_add' => true]) }}"
                                                 class="btn-modal"
                                                 data-container="case_stage_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{ Form::select('stage_id', $data['stages'], isset($clientCaseModel)?$clientCaseModel->stage_id : null, ['class' => 'primary_select', 'data-placeholder' => __('case.Select Case Stage'), 'data-parsley-errors-container' => '#stage_id_error']) }}
                                 <span id="stage_id_error"></span>

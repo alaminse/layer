@@ -11,10 +11,10 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px" >{{ __('case.Case Category') }}</h3>
                             <ul class="d-flex">
-                            @if(permissionCheck('category.case.store'))
+                            @can('category.case.store')
 
                                 <li><a class="primary-btn radius_30px mr-10 fix-gr-bg" href="{{ route('category.case.create') }}"><i class="ti-plus"></i>{{ __('case.Add Case Category') }}</a></li>
-                            @endif
+                            @endcan
                             </ul>
                         </div>
                     </div>
@@ -48,19 +48,19 @@
                                                             {{ __('common.Select') }}
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                                        @if(permissionCheck('category.case.edit'))
+                                                        @can('category.case.edit')
 
                                                         <a href="{{ route('category.case.edit', $model->id) }}"
                                                         class="dropdown-item"><i class="icon-pencil"></i>  {{ __('common.Edit') }}</a>
-                                                        @endif
-                                                        @if(permissionCheck('category.case.destroy'))
+                                                        @endcan
+                                                        @can('category.case.destroy')
 
                                                         <span id="delete_item" data-id="{{ $model->id }}" data-url="{{ route
                                                         ('category.case.destroy', $model->id)
                                                         }}"
                                                         class="dropdown-item"><i class="icon-trash"></i>
                                                             {{ __('common.Delete') }} </span>
-                                                        @endif
+                                                        @endcan
 
                                                         </div>
                                                     </div>
@@ -85,7 +85,7 @@
 @push('admin.scripts')
     <script>
         $(document).ready(function() {
-            
+
         });
 
     </script>
