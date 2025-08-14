@@ -28,7 +28,6 @@
         "socialiteproviders/apple": "^5.6.0",
         "spatie/laravel-permission": "^6.20",
         "spatie/laravel-translatable": "6.5.3",
-        "spondonit/advocate-service": "^1.2.1",
         "stripe/stripe-php": "^13.0.0",
         "symfony/symfony": "^6.3.5",
         "yajra/laravel-datatables": "^10.1.0"

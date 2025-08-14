@@ -188,20 +188,6 @@
       0 => 'Spatie\\Translatable\\TranslatableServiceProvider',
     ),
   ),
-  'spondonit/advocate-service' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'SpondonIt\\AdvocateService\\SpondonItAdvocateServiceProvider',
-    ),
-  ),
-  'spondonit/service' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'SpondonIt\\Service\\SpondonItServiceProvider',
-    ),
-  ),
   'yajra/laravel-datatables-buttons' => 
   array (
     'providers' => 

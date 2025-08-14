@@ -8,7 +8,6 @@ use Modules\ModuleManager\Entities\Module;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubscriptionController;
 
-
 if (moduleStatusCheck('AdvSaas')) {
     Route::group(['middleware' => ['subdomain']], function ($routes) {
         require('tenant.php');
