@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\ModuleManager\Entities\Module;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\Artisan;
 
 if (moduleStatusCheck('AdvSaas')) {
     Route::group(['middleware' => ['subdomain']], function ($routes) {
@@ -91,7 +92,7 @@ Route::group(['middleware' => ['auth', 'check.plan']], function () {
         Cache::forget('ModuleList');
         Cache::forget('ModuleManagerList');
 
-        \Artisan::call('migrate', ['--force' => true]);
+        Artisan::call('migrate', ['--force' => true]);
     });
 });
 
