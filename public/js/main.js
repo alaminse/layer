@@ -169,7 +169,7 @@ var _formValidation = function (form_id = '#content_form', modal = false, modal_
                 dataType: 'JSON',
                 success: function (data) {
 
-                    
+
                 console.log('okay');
                 console.log(data);
 
@@ -227,6 +227,8 @@ var _formValidation = function (form_id = '#content_form', modal = false, modal_
                     form.find('.submitting').hide();
                 },
                 error: function (data) {
+                    console.log('error', data);
+
                     form.find('.submit').show();
                     form.find('.submitting').hide();
                     let method = $('input[name="_method"]').val();
@@ -649,7 +651,7 @@ $(document).on('click','.case-attach',function(){
 
 $(document).on('change','.file-upload-multi',function(e){
     let fileName = e.target.files[0].name;
-   
+
     $(this).parent().parent().find('#placeholderStaffsName').attr('placeholder',fileName);
 });
 

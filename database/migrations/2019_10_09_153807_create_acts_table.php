@@ -13,6 +13,7 @@ class CreateActsTable extends Migration {
 	public function up() {
 		Schema::create('acts', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('name')->nullable();
 			$table->longText('description')->nullable();
 			$table->timestamps();

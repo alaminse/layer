@@ -7,7 +7,7 @@
                     <div class="main-title d-md-flex">
                         <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px">Organization List</h3>
                         <ul class="d-flex">
-                            @can('organization-create')
+                            @can('organization.create')
                                 <li><a class="primary-btn radius_30px mr-10 fix-gr-bg"
                                         href="{{ route('organizations.create') }}"><i class="ti-plus"></i>New
                                         Organization</a></li>

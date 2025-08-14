@@ -8,6 +8,7 @@ use App\Traits\CustomFields;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Jobs\WelcomeMailJob;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Modules\CustomField\Services\CustomFieldService;
 
@@ -25,7 +26,12 @@ class ContactController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		$models = Contact::all();
+		$models = Contact::query();
+        if (isNonAdminWithOrg()) {
+         $models = $models->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $models = $models->latest()->get();
 		return view('contact.index', compact('models'));
 	}
 
@@ -36,9 +42,13 @@ class ContactController extends Controller {
 	 */
 	public function create() {
 
+		$contact_categories = ContactCategory::query();
 
+        if (isNonAdminWithOrg()) {
+         $contact_categories = $contact_categories->where('organization_id', Auth::user()->organization_id);
+        }
 
-		$contact_categories = ContactCategory::all()->pluck('name', 'id')->prepend(__('contact.Select Contact Category'), '');
+        $contact_categories = $contact_categories->get()->pluck('name', 'id')->prepend(__('contact.Select Contact Category'), '');
 		$fields = null;
 
 		if (moduleStatusCheck('CustomField')){
@@ -59,8 +69,8 @@ class ContactController extends Controller {
 	 * @return void
 	 * @throws ValidationException
 	 */
-	public function store(Request $request) {
-
+	public function store(Request $request)
+    {
 		if (!$request->json()) {
 			abort(404);
 		}
@@ -87,7 +97,9 @@ class ContactController extends Controller {
 		$model->email = $request->email;
 		$model->contact_category_id = $request->contact_category_id;
 		$model->description = $request->description;
-		$model->save();
+		$data = $model->save();
+
+        return $data;
 
         if (moduleStatusCheck('CustomField')){
             $this->storeFields($model, $request->custom_field, 'contact');
@@ -135,7 +147,15 @@ class ContactController extends Controller {
             $model = Contact::with('customFields')->findOrFail($id);
             $fields = getFieldByType('contact');
         }
-		$contact_categories = ContactCategory::all()->pluck('name', 'id')->prepend(__('contact.Select Contact Category'), '');
+		$contact_categories = ContactCategory::query();
+
+
+        if (isNonAdminWithOrg()) {
+         $contact_categories = $contact_categories->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $contact_categories = $contact_categories->latest()->get()->pluck('name', 'id')->prepend(__('contact.Select Contact Category'), '');
+
 		return view('contact.edit', compact('model', 'contact_categories', 'fields'));
 	}
 

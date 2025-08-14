@@ -16,6 +16,7 @@ class CreateClientsTable extends Migration
         if (!Schema::hasTable('clients')) {
             Schema::create('clients', function (Blueprint $table) {
                 $table->bigIncrements('id');
+                $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
                 $table->string('name');
 
                 $table->unsignedBigInteger('country_id')->nullable();

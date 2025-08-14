@@ -13,6 +13,7 @@ class CreateLawyersTable extends Migration {
 	public function up() {
 		Schema::create('lawyers', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('name')->nullable();
 			$table->string('mobile_no')->nullable();
 			$table->longText('description')->nullable();

@@ -17,6 +17,7 @@ class CreateCaseParticipantsTable extends Migration
     {
         Schema::create('case_participants', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name')->nullable();
             $table->string('advocate')->nullable();
             $table->bigInteger('case_id')->nullable()->unsigned();

@@ -13,6 +13,7 @@ class CreateContactCategoriesTable extends Migration {
 	public function up() {
 		Schema::create('contact_categories', function (Blueprint $table) {
 			$table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
 			$table->string('name')->nullable();
 			$table->longText('description')->nullable();
 			$table->timestamps();

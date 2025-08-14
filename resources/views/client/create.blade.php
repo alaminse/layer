@@ -49,13 +49,13 @@
                             <div class="primary_input col-md-6">
                                 <div class="d-flex justify-content-between">
                                     {{Form::label('client_category_id', __('client.Category'))}}
-                                    @if(permissionCheck('category.client.store'))
+                                    @can('client.category.store')
                                         <label class="primary_input_label green_input_label" for="">
                                             <a href="{{ route('category.client.create', ['quick_add' => true]) }}"
                                                class="btn-modal"
                                                data-container="client_category_add_modal">{{ __('case.Create New') }}
                                                 <i class="fas fa-plus-circle"></i></a></label>
-                                    @endif
+                                    @endcan
                                 </div>
                                 {{Form::select('client_category_id', $client_categories, null, ['class' => 'primary_select', 'data-placeholder' => __('client.Select Division'),  'data-parsley-errors-container' => '#client_category_id_error'])}}
                                 <span id="client_category_id_error"></span>

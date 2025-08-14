@@ -15,6 +15,7 @@ class CreateCaseCommentFilesTable extends Migration
     {
         Schema::create('case_comment_files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->uuid('uuid')->nullable();
             $table->string('filename')->nullable();
             $table->string('filepath')->nullable();

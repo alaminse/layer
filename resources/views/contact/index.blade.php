@@ -52,18 +52,16 @@
                                                             {{ __('common.Select') }}
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                                                @if(permissionCheck('contact.show'))
+                                                                @can('contact.show')
                                                                 <a href="{{ route('contact.show', $model->id) }}" class="dropdown-item edit_brand">{{__('common.View')}}</a>
-                                                                @endif
-                                                                @if(permissionCheck('contact.edit'))
+                                                                @endcan
+                                                                @can('contact.edit')
                                                                 <a href="{{ route('contact.edit', $model->id) }}" class="dropdown-item edit_brand">{{__('common.Edit')}}</a>
-                                                                @endif
+                                                                @endcan
 
-                                                                @if(permissionCheck('contact.destroy'))
+                                                                @can('contact.destroy')
                                                                  <span style="cursor: pointer;" data-url="{{route('contact.destroy', $model->id)}}" id="delete_item" class="dropdown-item edit_brand" >{{__('common.Delete')}}</span>
-                                                                @endif
-
-
+                                                                @endcan
 
                                                         </div>
                                                     </div>

@@ -3,10 +3,28 @@
 use App\User;
 use Carbon\Carbon;
 use App\Models\Organization;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Modules\Attendance\Entities\Attendance;
 use Modules\Localization\Entities\Language;
+
+// Custom Start
+if (!function_exists('isNonAdminWithOrg')) {
+    function isNonAdminWithOrg(): bool
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return false;
+        }
+
+        // Assuming your admin role name is 'admin'
+        $isAdmin = $user->hasRole('admin');
+
+        return !$isAdmin && !is_null($user->organization_id);
+    }
+}
+// Custom End
 
 if (!function_exists('_lang')) {
     function _lang($string = '')

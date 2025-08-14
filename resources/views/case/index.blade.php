@@ -11,12 +11,12 @@
                         <div class="main-title d-md-flex">
                             <h3 class="mb-0 mr-30 mb_xs_15px mb_sm_20px">{{ __('case.' . $page_title . ' Case') }}</h3>
                             <ul class="d-flex">
-                                @if (permissionCheck('case.store'))
+                                @can ('case.store')
                                     <li><a class="primary-btn radius_30px mr-10 fix-gr-bg"
                                             href="{{ route('case.create') }}"><i
                                                 class="ti-plus"></i>{{ __('case.New Case') }}</a>
                                     </li>
-                                @endif
+                                @endcan
                             </ul>
                         </div>
                     </div>

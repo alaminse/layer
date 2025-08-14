@@ -81,7 +81,7 @@
                                     @endphp
                                     <div class="row mt-40">
                                         <div class="col-lg-12 text-center">
-                                            @canany(['role-create', 'role-edit'])
+                                            @canany(['permission.roles.create', 'permission.roles.edit'])
                                                 <button class="primary-btn fix-gr-bg" data-toggle="tooltip"
                                                     title="{{ @$tooltip }}">
                                                     <span class="ti-check"></span>
@@ -138,12 +138,12 @@
                                                                     </button>
                                                                     <div class="dropdown-menu dropdown-menu-right"
                                                                         aria-labelledby="dropdownMenu2">
-                                                                        @can('role-edit')
+                                                                        @can('permission.roles.edit')
                                                                             <a href="{{ route('roles.edit', $role->id) }}"
                                                                                 class="dropdown-item"
                                                                                 type="button">@lang('common.Edit')</a>
                                                                         @endcan
-                                                                        @can('role-delete')
+                                                                        @can('permission.roles.delete')
                                                                             <a href="#" class="dropdown-item"
                                                                                 type="button" data-toggle="modal"
                                                                                 href="#" data-id="{{ @$role->id }}"
@@ -155,7 +155,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                @can('role-permission-assign')
+                                                                @can('permission.permission-assign')
                                                                     <a href="{{ route('roles.edit.permission', $role->id) }}"
                                                                     class="ml-1">
                                                                         <button type="button"

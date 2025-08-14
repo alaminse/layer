@@ -17,6 +17,7 @@ class CreateStaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->string('employee_id', 50)->nullable();
             $table->integer('user_id')->nullable()->default(1)->unsigned();
             $table->string('phone', 20)->nullable();

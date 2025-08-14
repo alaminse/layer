@@ -30,9 +30,15 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $models = Client::when(moduleStatusCheck('ClientLogin'), function ($quey) {
-            $quey->whereIn('status', ['active', 'approve'])->orWhereNull('status');
-        })->get();
+        $models = Client::query();
+
+        if (isNonAdminWithOrg()) {
+            $models = $models->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $models = $models->when(moduleStatusCheck('ClientLogin'), function ($quey) {
+                    $quey->whereIn('status', ['active', 'approve'])->orWhereNull('status');
+                })->get();
         return view('client.index', compact('models'));
     }
     public function waitingPage()
@@ -60,6 +66,7 @@ class ClientController extends Controller
         $countries = Country::all()->pluck('name', 'id')->prepend(__('client.Select country'), '');
         $states = State::where('country_id', config('configs.country_id'))->pluck('name', 'id')->prepend(__('client.Select state'), '');
         $client_categories = self::getCategory('client', 'prepend');
+
         $fields = null;
 
         if (moduleStatusCheck('CustomField')) {
@@ -110,7 +117,8 @@ class ClientController extends Controller
         if (moduleStatusCheck('CustomField')) {
             $validate_rules = array_merge($validate_rules, $this->generateValidateRules('client'));
         }
-        $organization = getOrganization();
+        // $organization = getOrganization();
+        $organization_id = Auth::user()->organization_id;
         $enable_login = false;
         $enable_login_auto = false;
         if (moduleStatusCheck('ClientLogin')) {
@@ -120,12 +128,12 @@ class ClientController extends Controller
         }
         if ($enable_login) {
             $validate_rules = array_merge($validate_rules, [
-                'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->where('organization_id', $organization->id)],
+                'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->where('organization_id', $organization_id)],
                 'password' => 'required|string|min:8',
             ]);
         } else {
             $validate_rules = array_merge($validate_rules, [
-                'email' => ['sometimes', 'nullable', 'email', 'max:191', Rule::unique('clients', 'email')->where('organization_id', $organization->id)],
+                'email' => ['sometimes', 'nullable', 'email', 'max:191', Rule::unique('clients', 'email')->where('organization_id', $organization_id)],
             ]);
         }
 
@@ -142,7 +150,7 @@ class ClientController extends Controller
         $model->mobile = $request->mobile;
         $model->address = $request->address;
         $model->description = $request->description;
-        $model->organization_id = $organization->id;
+        $model->organization_id = $organization_id;
         $model->type = $request->type;
         if (moduleStatusCheck('ClientLogin')) {
             $model->status = $request->filled('frontend') ? ($enable_login_auto ? 'active' : 'pending') : 'active';
@@ -158,7 +166,7 @@ class ClientController extends Controller
             $user->email = $model->email;
             $user->password = bcrypt($request->password);
             $user->is_active = $request->filled('frontend') ? ($enable_login_auto ? 1 : 0) : 1;
-            $user->organization_id = $organization->id;
+            $user->organization_id = $organization_id;
             $user->save();
 
             $model->user_id = $user->id;
@@ -423,7 +431,11 @@ class ClientController extends Controller
     public static function getCategory($type = null, $prepend = null)
     {
         $msg = $type == 'company' ? 'client.Select Company Category' : 'client.Select Category';
-        $model = ClientCategory::get();
+
+        $model = ClientCategory::query();
+        if (isNonAdminWithOrg()) {
+            $model = $model->where('organization_id', Auth::user()->organization_id);
+        }
         if ($prepend) {
             return $model->pluck('name', 'id')
                 ->prepend(__($msg), '');

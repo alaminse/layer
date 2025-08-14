@@ -15,7 +15,7 @@ class CreateCommentReadsTable extends Migration
     {
         Schema::create('comment_reads', function (Blueprint $table) {
             $table->id();
-
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->bigInteger('case_comment_id')->nullable()->unsigned();
             $table->foreign('case_comment_id')->references('id')->on('case_comments')
                 ->onDelete('cascade');

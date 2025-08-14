@@ -15,10 +15,11 @@ class CreateCaseCommentsTable extends Migration
     {
         Schema::create('case_comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->integer('staff_id')->nullable();
             $table->longText('comments')->nullable();
             $table->bigInteger('case_id')->nullable()->unsigned();
-            $table->foreign('case_id')->references('id')->on('cases')->onDelete('cascade'); 
+            $table->foreign('case_id')->references('id')->on('cases')->onDelete('cascade');
             $table->timestamps();
         });
     }

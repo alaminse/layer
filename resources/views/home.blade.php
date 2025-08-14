@@ -2,7 +2,7 @@
 
 @section('mainContent')
     <div class="container-fluid p-0">
-        {{-- @if (permissionCheck('dashboard_quick_summery.index')) --}}
+        @can ('dashboard_quick_summery.index')
             <div class="row">
                 <div class="col-lg-12">
                     <div class="main-title">
@@ -19,7 +19,7 @@
                                     <h3>{{ __('dashboard.Client') }} </h3>
                                     <p class="mb-0">{{ __('dashboard.Total Client') }}</p>
                                 </div>
-                                <h1 class="gradient-color2">{{ App\Models\Client::all()->count() }}
+                                <h1 class="gradient-color2">{{ App\Models\Client::where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                     <h3>{{ __('dashboard.Lawyer') }}</h3>
                                     <p class="mb-0">{{ __('dashboard.Total Lawyer') }}</p>
                                 </div>
-                                <h1 class="gradient-color2">{{ App\Models\Lawyer::all()->count() }}
+                                <h1 class="gradient-color2">{{ App\Models\Lawyer::where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                     <h3>{{ __('dashboard.Contact') }}</h3>
                                     <p class="mb-0">{{ __('dashboard.Total Contact') }}</p>
                                 </div>
-                                <h1 class="gradient-color2">{{ App\Models\Contact::all()->count() }}
+                                <h1 class="gradient-color2">{{ App\Models\Contact::where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                     <p class="mb-0">{{ __('dashboard.Total Running Cases') }}</p>
                                 </div>
                                 <h1 class="gradient-color2">
-                                    {{ App\Models\Cases::where('status', 'Open')->where('judgement_status', '=', 'Open')->count() }}
+                                    {{ App\Models\Cases::where('status', 'Open')->where('judgement_status', '=', 'Open')->where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                     <p class="mb-0">{{ __('dashboard.Total Waiting Cases') }}</p>
                                 </div>
                                 <h1 class="gradient-color2">
-                                    {{ App\Models\Cases::where('hearing_date', '<', date('Y-m-d'))->where('status', 'Open')->where('judgement_status', '=', 'Open')->count() }}
+                                    {{ App\Models\Cases::where('hearing_date', '<', date('Y-m-d'))->where('status', 'Open')->where('judgement_status', '=', 'Open')->where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                     <p class="mb-0">{{ __('dashboard.Total Closed Cases') }}</p>
                                 </div>
                                 <h1 class="gradient-color2">
-                                    {{ App\Models\Cases::where('judgement_status', 'Close')->count() }}
+                                    {{ App\Models\Cases::where('judgement_status', 'Close')->where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                     <h3>{{ __('dashboard.Staff') }}</h3>
                                     <p class="mb-0">{{ __('dashboard.Total Staff') }}</p>
                                 </div>
-                                <h1 class="gradient-color2">{{ App\Staff::count() }}
+                                <h1 class="gradient-color2">{{ App\Staff::where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                     <h3>{{ __('dashboard.Pending Task') }}</h3>
                                     <p class="mb-0">{{ __('dashboard.Total Pending task') }}</p>
                                 </div>
-                                <h1 class="gradient-color2">{{ Modules\Task\Entities\Task::where('status', 0)->count() }}
+                                <h1 class="gradient-color2">{{ Modules\Task\Entities\Task::where('status', 0)->where('organization_id', auth()->id())->count() }}
                                 </h1>
                             </div>
                         </div>
@@ -136,13 +136,14 @@
 
 
             </div>
-        {{-- @endif --}}
+        @endcan
 
 
         <div class="row mt-40">
-            {{-- @if (permissionCheck('dashboad_calender.index')) --}}
-                {{-- <div class="col-lg-{{ permissionCheck('dashboad_calender.index') ? 7 : 12 }}"> --}}
-                <div class="col-lg-12">
+            @can ('dashboad_calender.index')
+                {{-- <div class="col-lg-@can('dashboad_calender.index')7@else12@endcan"> --}}
+                    <div class="col-lg-{{ auth()->user()->can('dashboad_calender.index') ? 7 : 12 }}">
+
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-sm-12">
                             <div class="main-title">
@@ -155,10 +156,10 @@
                         </div>
                     </div>
                 </div>
-            {{-- @endif --}}
-            {{-- @if (permissionCheck('dashboard_todo.index')) --}}
-                {{-- <div class="col-{{ permissionCheck('dashboard_todo.index') ? 5 : 6 }}"> --}}
-                <div class="col-6">
+            @endcan
+            @can ('dashboard_todo.index')
+                <div class="col-lg-{{ auth()->user()->can('dashboard_todo.index') ? 5 : 6 }}">
+
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-sm-6">
                             <div class="main-title">
@@ -245,16 +246,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-            {{-- @endif --}}
+            @endcan
         </div>
 
 
         <div class="row mt-40">
 
-            {{-- @if (permissionCheck('dashboard_appointment.index')) --}}
+            @can ('dashboard_appointment.index')
                 <div class="col-lg-6 col-md-6">
 
                     <div class="white_box_30px mb_30">
@@ -336,10 +335,10 @@
                         </div>
                     </div>
                 </div>
-            {{-- @endif --}}
+            @endcan
 
 
-            {{-- @if (permissionCheck('dashboard_upcoming_date.index')) --}}
+            @can ('dashboard_upcoming_date.index')
                 <div class="col-lg-6 col-md-6">
 
                     <div class="white_box_30px mb_30">
@@ -375,13 +374,13 @@
                         </div>
                     </div>
                 </div>
-            {{-- @endif --}}
+            @endcan
 
 
         </div>
 
 
-        {{-- @if (permissionCheck('dashboard_todo.index')) --}}
+        @can ('dashboard_todo.index')
             <div class="modal fade admin-query" id="add_to_do">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -457,7 +456,7 @@
                     </div>
                 </div>
             </div>
-        {{-- @endif --}}
+        @endcan
 
     </div>
     @if (moduleStatusCheck('Appointment'))

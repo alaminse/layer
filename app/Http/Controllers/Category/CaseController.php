@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CaseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class CaseController extends Controller
@@ -21,7 +22,13 @@ class CaseController extends Controller
      */
     public function index()
     {
-        $models = CaseCategory::all();
+        $models = CaseCategory::query();
+        if (isNonAdminWithOrg()) {
+            $models = $models->where('organization_id', Auth::user()->organization_id);
+        }
+
+        $models = $models->latest()->get();
+
         return view('category.case.index', compact('models'));
     }
 

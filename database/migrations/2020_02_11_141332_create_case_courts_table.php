@@ -15,6 +15,7 @@ class CreateCaseCourtsTable extends Migration
     {
         Schema::create('case_courts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
             $table->date('date')->nullable();
             $table->string('case_id')->nullable();
             $table->string('court_id')->nullable();
